@@ -7,7 +7,7 @@ class MessageList extends Component {
     this.state = {
       messages: [{
         username:'',
-        constent:'',
+        content:'',
         sentat: this.props.firebase.database.ServerValue.TIMESTAMP,
         roomId:''
       }],
@@ -21,17 +21,18 @@ class MessageList extends Component {
       let message = snapshot.val();
       console.log(message);
       message.key = snapshot.key;
-      this.setState({ messages: this.setState.messages.concat( message ) })
+      this.setState({ messages: this.state.messages.concat( message ) });
     });
 
   }
   render() {
     const activeRoom = this.props.activeRoom;
+    console.log(this.state.messages);
     const messageList = this.state.messages.filter(message => message.roomId === activeRoom)
         .map(message => {
           return <div key={message.key}>{message.content}</div>
         })
-
+        console.log(messageList)
         return (
           <div className='chats'>
             <ul>{messageList}</ul>
