@@ -27,11 +27,17 @@ class MessageList extends Component {
 
   }
   render() {
+    const activeRoom = this.props.activeRoom;
+    console.log(this.state.messages);
+    const messageList = this.state.messages.filter(message => message.roomId === activeRoom)
+        .map(message => {
+          return <div key={message.key}>{message.content}</div>
+        })
+        console.log(messageList)
         return (
-         <ul>
-          {this.state.messages.map( message =>
-            <li>{message}</li>
-           </ul>
+          <div className='chats'>
+            <ul>{messageList}</ul>
+          </div>
         );
       }
 
