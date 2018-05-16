@@ -19,21 +19,17 @@ class MessageList extends Component {
   componentDidMount () {
     this.messagesRef.on('child_added',snapshot => {
       let message = snapshot.val();
-      console.log(message);
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( message ) });
-      console.log(this.state.messages);
     });
 
   }
   render() {
     const activeRoom = this.props.activeRoom;
-    console.log(this.state.messages);
-    const messageList = this.state.messages.filter(message => message.roomId === activeRoom)
+    const messageList = this.state.messages.filter(message => message.roomId === activeRoom.key)
         .map(message => {
-          return <div key={message.key}>{message.content}</div>
+          return <div key={message.key}>{message.content} {message.timeStamp}</div>
         })
-        console.log(messageList)
         return (
           <div className='chats'>
             <ul>{messageList}</ul>
