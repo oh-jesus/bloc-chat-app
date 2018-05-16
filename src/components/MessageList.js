@@ -22,21 +22,16 @@ class MessageList extends Component {
       console.log(message);
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( message ) });
+      console.log(this.state.messages);
     });
 
   }
   render() {
-    const activeRoom = this.props.activeRoom;
-    console.log(this.state.messages);
-    const messageList = this.state.messages.filter(message => message.roomId === activeRoom)
-        .map(message => {
-          return <div key={message.key}>{message.content}</div>
-        })
-        console.log(messageList)
         return (
-          <div className='chats'>
-            <ul>{messageList}</ul>
-          </div>
+         <ul>
+          {this.state.messages.map( message =>
+            <li>{message}</li>
+           </ul>
         );
       }
 
