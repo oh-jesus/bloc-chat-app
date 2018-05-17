@@ -1,0 +1,7 @@
+.chats {
+  text-align: right;
+  padding-right: 60px;
+ }
+  li:nth-child(odd){
+    background-color: #F7F7F7;
+}
