@@ -44,7 +44,7 @@ setRoom(room) {
         </nav>
         <main>
           <h2>{this.state.activeRoom.name}</h2>
-          <MessageList firebase = {firebase} activeRoom = {this.state.activeRoom}/>
+          <MessageList className="chatRoom" firebase = {firebase} activeRoom = {this.state.activeRoom}/>
         </main>
       </div>
     );

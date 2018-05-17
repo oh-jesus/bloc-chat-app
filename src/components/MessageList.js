@@ -1,4 +1,5 @@
 import React, { Component } from 'react' ;
+import './MessageList.css'
 
 class MessageList extends Component {
 
@@ -8,7 +9,7 @@ class MessageList extends Component {
       messages: [{
         username:'',
         content:'',
-        sentat: this.props.firebase.database.ServerValue.TIMESTAMP,
+        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
         roomId:''
       }],
       message: ''
@@ -28,11 +29,16 @@ class MessageList extends Component {
     const activeRoom = this.props.activeRoom;
     const messageList = this.state.messages.filter(message => message.roomId === activeRoom.key)
         .map(message => {
-          return <div key={message.key}>{message.content} {message.timeStamp}</div>
+          return <div key={message.key}>
+            <ul>
+            <li>'{message.content}'</li>
+            <li>sent at-{message.sentAt} from-{message.userName}</li>
+            </ul>
+          </div>
         })
         return (
-          <div className='chats'>
-            <ul>{messageList}</ul>
+          <div className="chats">
+            {messageList}
           </div>
         );
       }
