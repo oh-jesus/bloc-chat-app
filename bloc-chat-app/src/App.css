@@ -29,6 +29,14 @@
   background-color: grey;
   overflow-x: hidden;
   padding-top: 10px;
+  text-align: center;
+
+}
+.chatRoom {
+  text-align: right;
+  background-color: #222;
+
+
 }
 
 @keyframes App-logo-spin {
