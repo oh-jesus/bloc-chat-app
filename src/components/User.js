@@ -38,6 +38,8 @@ console.log(this.props.user);
         </span>
   			  <button onClick = {this.signIn}>sign in
   			  </button>
+          <button onClick = {this.signOut}>sign out
+          </button>
   			</section>
     )
   }
