@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import Roomlist from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 // Initialize Firebase
  var config = {
@@ -41,6 +42,7 @@ setRoom(room) {
         </header>
         <nav className="roomsList">
           <Roomlist firebase = {firebase} activeRoom ={this.setRoom.bind(this)}/>
+          <User firebase = {firebase} setUser = {this.setUser.bind(this)} user = {this.state.user}/>
         </nav>
         <main>
           <h2>{this.state.activeRoom.name}</h2>
