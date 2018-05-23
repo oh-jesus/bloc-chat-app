@@ -45,5 +45,4 @@ console.log(this.props.user);
   }
 }
 
-
 export default User;
