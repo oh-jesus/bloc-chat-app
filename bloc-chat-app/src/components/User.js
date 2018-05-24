@@ -31,16 +31,15 @@ class User extends Component {
 if (this.props.user) {
   userName = this.props.user.displayName;
 }
-console.log(this.props.user);
     return(
       <section>
-            <span>{userName}
-            </span>
-      			  <button onClick = {this.signIn}>sign in
-      			  </button>
-              <button onClick = {this.signOut}>sign out
-              </button>
-      			</section>
+        <span>{userName}
+        </span>
+  			  <button onClick = {this.signIn}>sign in
+  			  </button>
+          <button onClick = {this.signOut}>sign out
+          </button>
+  			</section>
     )
   }
 }
