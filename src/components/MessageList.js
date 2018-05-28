@@ -7,9 +7,9 @@ class MessageList extends Component {
     super(props);
     this.state = {
       messages: [{
-        username:'',
+        userName:'',
         content:'',
-        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+        sentAt: '',
         roomId:''
       }],
       message: ''
@@ -23,8 +23,21 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( message ) });
     });
-
   }
+    handleChange(e) {
+      this.setState({message: e.target.value});
+    }
+
+    createMessage (e) {
+      this.messagesRef.push({
+        content: this.state.message,
+        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+        roomId: this.props.activeRoom.key,
+      });
+      this.setState({message: ''});
+    }
+
+
   render() {
     const activeRoom = this.props.activeRoom;
     const messageList = this.state.messages.filter(message => message.roomId === activeRoom.key)
@@ -37,9 +50,15 @@ class MessageList extends Component {
           </div>
         })
         return (
-          <div className="chats">
-            {messageList}
-          </div>
+          <section>
+           <div className="chats">
+             {messageList}
+           </div>
+           <form onSubmit={ (e) => { e.preventDefault(); this.createMessage(this.state.message) }}>
+             <input type="text" name="message" value= {this.state.message} onChange= {this.handleChange.bind(this)}/>
+             <input type="submit" value="send"/>
+           </form>
+         </section>
         );
       }
 
