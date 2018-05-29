@@ -31,7 +31,6 @@ class User extends Component {
 if (this.props.user) {
   userName = this.props.user.displayName;
 }
-console.log(this.props.user);
     return(
       <section>
             <span>{userName}
